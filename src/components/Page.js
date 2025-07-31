@@ -17,14 +17,12 @@ const Page = props => {
 
     const pathname = document.location.pathname;
 
-    if (pathname === '/about') {
+    if (pathname.endsWith('/apps')) {
       headerElem.children[0].firstChild.className = 'nav-link active';
-    } else if (pathname === '/apps') {
+    } else if (pathname.endsWith('/games')) {
       headerElem.children[1].firstChild.className = 'nav-link active';
-    } else if (pathname === '/games') {
+    } else if (pathname.endsWith('/blog')) {
       headerElem.children[2].firstChild.className = 'nav-link active';
-    } else if (pathname === '/blog') {
-      headerElem.children[3].firstChild.className = 'nav-link active';
     }
 
     window.addEventListener('scroll', () => {
