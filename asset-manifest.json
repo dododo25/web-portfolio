@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.75d47bd3.css",
-    "main.js": "/static/js/main.dc50cabc.js",
+    "main.css": "/static/css/main.79bbf505.css",
+    "main.js": "/static/js/main.2e71ee54.js",
     "static/media/Outfit-VariableFont_wght.ttf": "/static/media/Outfit-VariableFont_wght.bf1886e36c43f7696cd6.ttf",
-    "static/media/stars3.png": "/static/media/stars3.e244e62e3c1e59e5d5b8.png",
-    "static/media/stars1.png": "/static/media/stars1.f08c9799b34f0a61a19a.png",
-    "static/media/stars2.png": "/static/media/stars2.74f8953f8cf624785508.png",
+    "static/media/stars1.png": "/static/media/stars1.d0ac12e830f900b0e678.png",
+    "static/media/stars2.png": "/static/media/stars2.e6b051295b9e05d4350f.png",
+    "static/media/stars3.png": "/static/media/stars3.92ff205748027d9edcfb.png",
     "index.html": "/index.html",
-    "main.75d47bd3.css.map": "/static/css/main.75d47bd3.css.map",
-    "main.dc50cabc.js.map": "/static/js/main.dc50cabc.js.map"
+    "main.79bbf505.css.map": "/static/css/main.79bbf505.css.map",
+    "main.2e71ee54.js.map": "/static/js/main.2e71ee54.js.map"
   },
   "entrypoints": [
-    "static/css/main.75d47bd3.css",
-    "static/js/main.dc50cabc.js"
+    "static/css/main.79bbf505.css",
+    "static/js/main.2e71ee54.js"
   ]
 }
