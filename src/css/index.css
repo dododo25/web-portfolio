@@ -1,0 +1,100 @@
+@font-face {
+  font-family: 'Outfit';
+  src: url('../fonts/Outfit-VariableFont_wght.ttf');
+}
+
+@keyframes navbar-box-shadow-anim {
+  from {
+    box-shadow: 0px 0 0 #000000;
+  }
+
+  to {
+    box-shadow: 0px 0px 2px #000000;
+  }
+}
+
+@keyframes moving-stars {
+  from {
+    transform: translateY(0px);
+  }
+
+  to {
+    transform: translateY(-1440px);
+  }
+}
+
+html {
+  font-size: 8px;
+}
+
+@media screen and (min-width: 576px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: 'Outfit';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.h-0 {
+  height: 0;
+}
+
+.w-70 {
+  width: 70%;
+}
+
+div.bg {
+  background: linear-gradient(90deg, #001119 0%, #001119 20%, #00141E 50%, #001119 80%, #001119 100%);
+  overflow: hidden;
+  z-index: -1;
+}
+
+div.bg > div {
+  position: sticky;
+  width: 100%;
+  bottom: 0;
+  height: calc(100% + 1440px);
+  background-repeat: repeat-y;
+  z-index: -2;
+}
+
+#stars1 {
+  background-image: url(../images/stars1.png);
+  animation: 10s linear 0s infinite both running moving-stars;
+}
+
+#stars2 {
+  background-image: url(../images/stars2.png);
+  animation: 20s linear 0s infinite both running moving-stars;
+}
+
+#stars3 {
+  background-image: url(../images/stars3.png);
+  animation: 40s linear 0s infinite both running moving-stars;
+}
+
+nav.navbar {
+  background-color: transparent !important;
+}

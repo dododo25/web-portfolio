@@ -1,0 +1,33 @@
+.app-card > img {
+  width: 12rem;
+}
+
+@media screen and (min-width: 576px) {
+  .app-card > img {
+    width: 18rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .app-card > img {
+    width: 24rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .app-card > img {
+    width: 28rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .app-card > img {
+    width: 36rem;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .app-card > img {
+    width: 42rem;
+  }
+}
