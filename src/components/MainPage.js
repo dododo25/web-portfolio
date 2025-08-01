@@ -6,7 +6,7 @@ const MainPage = () => {
   const content = (
     <div className='d-flex flex-column h-100'>
       <div className='d-flex flex-column pb-0 mx-auto my-auto'>
-        <p id='title'>Dmytro Terekhov</p>
+        <p id='title' className='fw-bold'>Dmytro Terekhov</p>
         <div className='d-flex flex-row justify-content-end align-items-center fs-5 w-100'>
           <a href='https://github.com/dododo25' target='_blank' rel='noreferrer' className='link d-flex flex-row align-items-center mx-2 text-white'>
             <p className='m-0'><i className='fa fa-brands fa-github fs-2 me-2'></i>GitHub</p>

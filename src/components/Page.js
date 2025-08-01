@@ -33,13 +33,13 @@ const Page = props => {
       mainContentElem.firstChild.style.cssText = '';
     };
 
-    const pathname = document.location.pathname;
+    const hash = document.location.hash;
 
-    if (pathname.endsWith('/apps')) {
+    if (hash.endsWith('/apps')) {
       headerElem.children[0].firstChild.className = 'nav-link active';
-    } else if (pathname.endsWith('/games')) {
+    } else if (hash.endsWith('/games')) {
       headerElem.children[1].firstChild.className = 'nav-link active';
-    } else if (pathname.endsWith('/blog')) {
+    } else if (hash.endsWith('/blog')) {
       headerElem.children[2].firstChild.className = 'nav-link active';
     }
 
@@ -63,27 +63,30 @@ const Page = props => {
   }, []);
 
   return ([
-    <Background />,
-    <div className='offcanvas offcanvas-start w-40 px-3' id='mainNavbar' tabindex='-1' data-bs-theme='dark'>
-      <div class='offcanvas-header'>
+    <Background key={0} />,
+    <div key={1} id='mainNavbar' className='offcanvas offcanvas-start w-40 px-3' tabIndex='-1' data-bs-theme='dark'>
+      <div className='offcanvas-header'>
         <h5 className='offcanvas-title'>dmytro.terekhov</h5>
         <button type='button' className='btn-close' data-bs-dismiss='offcanvas' aria-label='Close'></button>
       </div>
-      <div class='offcanvas-body'>
+      <div className='offcanvas-body'>
         <ul ref={headerRef} className='navbar-nav'>
           <li className='nav-item'>
-            <a className='nav-link' href='/apps'>apps</a>
+            <a className='nav-link' href='/'>home</a>
           </li>
           <li className='nav-item'>
-            <a className='nav-link' href='/games'>games</a>
+            <a className='nav-link' href='/#/apps'>apps</a>
           </li>
           <li className='nav-item'>
-            <a className='nav-link' href='/blog'>blog</a>
+            <a className='nav-link' href='/#/games'>games</a>
+          </li>
+          <li className='nav-item'>
+            <a className='nav-link' href='/#/blog'>blog</a>
           </li>
         </ul>
       </div>
     </div>,
-    <div className='position-absolute w-100 h-100 t-0' style={{top: 0}}>
+    <div key={2} className='position-absolute w-100 h-100 t-0' style={{top: 0}}>
       <nav ref={navbarRef} className='navbar navbar-expand-lg fixed-top bg-dark' data-bs-theme='dark'>
         <div className='container-fluid w-auto'>
           <div className='d-flex flex-row align-items-center'>
@@ -97,13 +100,13 @@ const Page = props => {
           <div className='collapse navbar-collapse'>
             <ul ref={headerRef} className='navbar-nav me-auto mb-2 mb-lg-0'>
               <li className='nav-item'>
-                <a className='nav-link' href='/apps'>apps</a>
+                <a className='nav-link' href='/#/apps'>apps</a>
               </li>
               <li className='nav-item'>
-                <a className='nav-link' href='/games'>games</a>
+                <a className='nav-link' href='/#/games'>games</a>
               </li>
               <li className='nav-item'>
-                <a className='nav-link' href='/blog'>blog</a>
+                <a className='nav-link' href='/#/blog'>blog</a>
               </li>
             </ul>
           </div>
@@ -116,7 +119,7 @@ const Page = props => {
           </div>
           <div style={{height: 100}} />
           <div className='d-flex flex-column flex-grow-0 flex-shrink-0'>
-            <Footer />
+            <Footer key={0} />
           </div>
         </div>
       </div>

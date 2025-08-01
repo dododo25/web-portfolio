@@ -23,7 +23,7 @@ const Games = () => {
     content = (
       <div className='d-flex flex-column h-100'>
         <h1 className='mx-auto mt-2 mb-4'>Games</h1>
-        <div className='d-flex pb-0 mx-auto my-auto' style={{fontSize: '8rem'}}>
+        <div className='d-flex fw-bold pb-0 mx-auto my-auto' style={{fontSize: '8rem'}}>
           Coding soon :)
         </div>
       </div>
