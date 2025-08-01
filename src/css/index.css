@@ -27,6 +27,10 @@ html {
   font-size: 8px;
 }
 
+.page-header {
+  font-size: 3.5rem;
+}
+
 @media screen and (min-width: 576px) {
   html {
     font-size: 10px;
@@ -65,8 +69,8 @@ code {
   width: 40% !important;
 }
 
-.w-70 {
-  width: 70%;
+.w-60 {
+  width: 60%;
 }
 
 div.bg {

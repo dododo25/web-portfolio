@@ -21,25 +21,24 @@ const Games = () => {
 
   if (data.length === 0) {
     content = (
-      <div className='d-flex flex-column h-100'>
-        <h1 className='mx-auto mt-2 mb-4'>Games</h1>
-        <div className='d-flex fw-bold pb-0 mx-auto my-auto' style={{fontSize: '8rem'}}>
-          Coding soon :)
-        </div>
+      <div className='d-flex fw-bold pb-0 mx-auto my-auto' style={{fontSize: '8rem'}}>
+        Coding soon :)
       </div>
     );
   } else {
     content = (
-      <div className='d-flex flex-column'>
-        <h1 className='mx-auto mt-2 mb-4'>Games</h1>
-        <div className='pb-0'>
-          {cards}
-        </div>
+      <div className='pb-0'>
+        {cards}
       </div>
     );
   }
 
-  return (<Page content={content} />);
+  return (<Page content={(
+      <div className='d-flex flex-column'>
+        <h1 className='page-header mx-auto mt-2 mb-4'>Games</h1>
+        {content}
+      </div>
+    )} />);
 }
 
 export default Games;

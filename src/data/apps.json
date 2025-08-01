@@ -1,1 +1,21 @@
-[]
+[
+    {
+        "key": "renpy-cracken",
+        "title": "Ren'Py Cracken",
+        "logo": {
+            "src": "https://i.postimg.cc/k5Y24ymS/logo.png",
+            "maxWidth": 360
+        },
+        "description": "Ren'Py Cracken is a Python project that can reconstruct your .rpyc\\.rpa files to its (mostly) original form.",
+        "links": [
+            {
+                "label": "Latest release",
+                "url": "https://github.com/dododo25/renpy-cracken/releases/latest"
+            },
+            {
+                "label": "<i class=\"fa fa-brands fa-github fs-4 me-1\"></i><span>Github</span>",
+                "url": "https://github.com/dododo25/renpy-cracken"
+            }
+        ]
+    }
+]
