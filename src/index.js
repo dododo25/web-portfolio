@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createHashRouter, RouterProvider } from 'react-router-dom';
 
 import './css/index.css';
 
@@ -8,7 +8,7 @@ import Games from './components/Games';
 import NotFound404 from './components/NotFound404';
 import MainPage from './components/MainPage';
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/',
     errorElement: <NotFound404 />,

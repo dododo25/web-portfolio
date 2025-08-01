@@ -1,3 +1,5 @@
+import '../css/Background.css';
+
 const Background = () => {
   return (
     <div className='position-relative bg w-100 h-100'>

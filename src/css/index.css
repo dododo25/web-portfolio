@@ -5,11 +5,11 @@
 
 @keyframes navbar-box-shadow-anim {
   from {
-    box-shadow: 0px 0 0 #000000;
+    box-shadow: 0 0 0 #000000;
   }
 
   to {
-    box-shadow: 0px 0px 2px #000000;
+    box-shadow: 0 0 2px 2px #000000;
   }
 }
 
@@ -61,6 +61,10 @@ code {
   height: 0;
 }
 
+.w-40 {
+  width: 40% !important;
+}
+
 .w-70 {
   width: 70%;
 }
@@ -78,21 +82,6 @@ div.bg > div {
   height: calc(100% + 1440px);
   background-repeat: repeat-y;
   z-index: -2;
-}
-
-#stars1 {
-  background-image: url(../images/stars1.png);
-  animation: 10s linear 0s infinite both running moving-stars;
-}
-
-#stars2 {
-  background-image: url(../images/stars2.png);
-  animation: 20s linear 0s infinite both running moving-stars;
-}
-
-#stars3 {
-  background-image: url(../images/stars3.png);
-  animation: 40s linear 0s infinite both running moving-stars;
 }
 
 nav.navbar {

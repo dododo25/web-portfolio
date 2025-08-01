@@ -15,6 +15,24 @@ const Page = props => {
     const mainContentElem = mainContentRef.current;
     const navbarElem      = navbarRef.current;
 
+    const frameFunction = () => {
+      mainContentElem.style.height = 0;
+      mainContentElem.firstChild.style.cssText = 'height:fit-content !important';
+
+      const offsetHeight = mainContentElem.firstChild.offsetHeight;
+      const screenHeight = window.innerHeight;
+
+      if (offsetHeight < screenHeight) {
+        rootElem.style.height        = `${screenHeight}px`;
+        mainContentElem.style.height = `calc(${screenHeight}px - 3.6rem)`;
+      } else {
+        rootElem.style.height        = `calc(3.6rem + ${offsetHeight}px)`;
+        mainContentElem.style.height = `${offsetHeight}px`;
+      }
+
+      mainContentElem.firstChild.style.cssText = '';
+    };
+
     const pathname = document.location.pathname;
 
     if (pathname.endsWith('/apps')) {
@@ -35,32 +53,10 @@ const Page = props => {
       }
     });
 
-    window.addEventListener('resize', () => {
-        const offsetHeight = mainContentElem.offsetHeight;
-        const screenHeight = window.innerHeight;
+    window.addEventListener('resize', frameFunction);
 
-        if (offsetHeight < screenHeight) {
-          rootElem.style.height        = `${screenHeight}px`;
-          mainContentElem.style.height = `calc(${screenHeight}px - 3.6rem)`;
-        } else {
-          rootElem.style.height        = `calc(3.6rem + ${offsetHeight}px)`;
-          mainContentElem.style.height = undefined;
-        }
-    });
-
-    const resizeObserver = new ResizeObserver(() => {
-      requestAnimationFrame(() => {
-        const offsetHeight = mainContentElem.offsetHeight;
-        const screenHeight = window.innerHeight;
-
-        if (offsetHeight < screenHeight) {
-          rootElem.style.height        = `${screenHeight}px`;
-          mainContentElem.style.height = `calc(${screenHeight}px - 3.6rem)`;
-        } else {
-          rootElem.style.height        = `calc(3.6rem + ${offsetHeight}px)`;
-          mainContentElem.style.height = undefined;
-        }
-      });
+    let resizeObserver = new ResizeObserver(() => {
+      requestAnimationFrame(frameFunction);
     });
 
     resizeObserver.observe(mainContentElem);
@@ -68,13 +64,37 @@ const Page = props => {
 
   return ([
     <Background />,
-    <div className='position-relative w-100 h-100' style={{bottom: '100%'}}>
+    <div className='offcanvas offcanvas-start w-40 px-3' id='mainNavbar' tabindex='-1' data-bs-theme='dark'>
+      <div class='offcanvas-header'>
+        <h5 className='offcanvas-title'>dmytro.terekhov</h5>
+        <button type='button' className='btn-close' data-bs-dismiss='offcanvas' aria-label='Close'></button>
+      </div>
+      <div class='offcanvas-body'>
+        <ul ref={headerRef} className='navbar-nav'>
+          <li className='nav-item'>
+            <a className='nav-link' href='/apps'>apps</a>
+          </li>
+          <li className='nav-item'>
+            <a className='nav-link' href='/games'>games</a>
+          </li>
+          <li className='nav-item'>
+            <a className='nav-link' href='/blog'>blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>,
+    <div className='position-absolute w-100 h-100 t-0' style={{top: 0}}>
       <nav ref={navbarRef} className='navbar navbar-expand-lg fixed-top bg-dark' data-bs-theme='dark'>
         <div className='container-fluid w-auto'>
-          <a className='nav-link' href='/'>
-            <span className='navbar-brand'>dmytro.terekhov</span>
-          </a>
-          <div className='collapse navbar-collapse' id='mainNavbar'>
+          <div className='d-flex flex-row align-items-center'>
+            <a className='nav-link' href='/'>
+              <span className='navbar-brand'>dmytro.terekhov</span>
+            </a>
+            <button className='navbar-toggler' type='button' data-bs-toggle='offcanvas' data-bs-target='#mainNavbar' aria-controls='mainNavbar' aria-label='Toggle navigation'>
+              <span className='navbar-toggler-icon'></span>
+            </button>
+          </div>
+          <div className='collapse navbar-collapse'>
             <ul ref={headerRef} className='navbar-nav me-auto mb-2 mb-lg-0'>
               <li className='nav-item'>
                 <a className='nav-link' href='/apps'>apps</a>

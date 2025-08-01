@@ -1,0 +1,14 @@
+#stars1 {
+  background-image: url(../images/stars1.png);
+  animation: 60s linear 0s infinite both running moving-stars;
+}
+
+#stars2 {
+  background-image: url(../images/stars2.png);
+  animation: 100s linear 0s infinite both running moving-stars;
+}
+
+#stars3 {
+  background-image: url(../images/stars3.png);
+  animation: 180s linear 0s infinite both running moving-stars;
+}
