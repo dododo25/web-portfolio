@@ -23,4 +23,4 @@ jobs:
           ls -f .
           git checkout main
           echo "last_commit_message=git log -1 --pretty=%B" >> $GITHUB_OUTPUT
-          echo $steps.build.outputs.last_commit_message
+          echo ${{steps.build.outputs.last_commit_message}}
