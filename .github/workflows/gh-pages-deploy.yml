@@ -14,6 +14,7 @@ jobs:
         uses: actions/checkout@master
       - name: build a project
         run: |
+          git remote -v
           npm ci
           npm install
           npm run build
@@ -21,7 +22,6 @@ jobs:
         working-directory: ./build
         run: |
           ls -f .
-          git branch --all
           git checkout main
           echo "last_commit_message=git log -1 --pretty=%B" >> "$GITHUB_OUTPUT"
           echo ${{steps.build.outputs.last_commit_message}}
