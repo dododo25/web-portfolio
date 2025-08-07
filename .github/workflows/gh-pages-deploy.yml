@@ -10,17 +10,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: initialize a repo
+      - name: checkout repo
         uses: actions/checkout@v4 # Use the latest version of actions/checkout
         with:
           fetch-depth: 0
-      - name: checkout repo
-        uses: actions/checkout@master
       - name: build a project
         run: |
-          ls -f .
-          git branch -r
-          ls -f .
           npm ci
           npm install
           npm run build
@@ -30,6 +25,7 @@ jobs:
           echo "last_commit_message=git log -1 --pretty=%B" >> "$GITHUB_OUTPUT"
           echo "${{steps.build.outputs.last_commit_message}}"
           git checkout -b gh-pages
+          ls -f ../..
           git add .
           git commit -m "${{steps.build.outputs.last_commit_message}}"
           git push origin gh-pages
