@@ -20,12 +20,14 @@ jobs:
           npm install
           npm run build
       - name: Push to gh-pages branch
-        working-directory: ./build
         run: |
           echo "last_commit_message=git log -1 --pretty=%B" >> "$GITHUB_OUTPUT"
           echo "${{steps.build.outputs.last_commit_message}}"
           git checkout -b gh-pages
-          ls -f ../..
+          ls -f .
+          mv ".git"/{*,.*} "./build"/
+          ls -f .
+          ls -f ./build
           git add .
           git commit -m "${{steps.build.outputs.last_commit_message}}"
           git push origin gh-pages
