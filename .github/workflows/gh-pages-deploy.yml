@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: initialize a repo
         run: |
+            ls -f .
             mkdir build
             cd build
             git fetch origin gh-pages
