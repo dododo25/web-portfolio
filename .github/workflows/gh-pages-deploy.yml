@@ -14,7 +14,6 @@ jobs:
         uses: actions/checkout@master
       - name: build a project
         run: |
-          git remote -v
           npm ci
           npm install
           npm run build
@@ -23,7 +22,7 @@ jobs:
         run: |
           echo "last_commit_message=git log -1 --pretty=%B" >> "$GITHUB_OUTPUT"
           echo "${{steps.build.outputs.last_commit_message}}"
-          git checkout origin/gh-pages
+          git checkout -b gh-pages origin/gh-pages
           git add .
           git commit -m "${{steps.build.outputs.last_commit_message}}"
-          git push
+          git push origin gh-pages
