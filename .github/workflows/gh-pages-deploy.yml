@@ -10,18 +10,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: build a project
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build
-    - name: Push to gh-pages branch
-      working-directory: ./build
-      run: |
-        ls- f .
-        git checkout main
-        echo "LAST_COMMIT_MESSAGE=$(echo git log -1 --pretty=%B)"
-        echo $LAST_COMMIT_MESSAGE
+      - name: checkout repo
+        uses: actions/checkout@master
+      - name: install dependencies
+        run: npm install
+      - name: build
+        run: npm run build
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Push to gh-pages branch
+        working-directory: ./build
+        run: |
+          ls- f .
+          git checkout main
+          echo "LAST_COMMIT_MESSAGE=$(echo git log -1 --pretty=%B)"
+          echo $LAST_COMMIT_MESSAGE
