@@ -17,5 +17,20 @@
                 "url": "https://github.com/dododo25/renpy-cracken"
             }
         ]
+    },
+    {
+        "key": "ariadne",
+        "title": "Ariadne",
+        "logo": {
+            "src": "https://i.postimg.cc/wxDqhNm4/Chat-GPT-Image-7-2025-11-22-53.png",
+            "maxWidth": 360
+        },
+        "description": "Ariadne is a Java project that can build a visible process diagram from Python or Ren'Py files.",
+        "links": [
+            {
+                "label": "<i class=\"fa fa-brands fa-github fs-4 me-1\"></i><span>Github</span>",
+                "url": "https://github.com/dododo25/ariadne"
+            }
+        ]
     }
 ]
