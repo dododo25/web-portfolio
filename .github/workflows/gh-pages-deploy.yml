@@ -27,8 +27,8 @@ jobs:
           mkdir .git
           cd ..
           mv .git/** ./build/.git/
-          ls -f ./build
-          git checkout -b gh-pages
+          cd build
+          git checkout gh-pages
           git add .
           git commit -m "${{steps.build.outputs.last_commit_message}}"
           git push origin gh-pages
