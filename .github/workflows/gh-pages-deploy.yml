@@ -11,17 +11,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: initialize a repo
-        run: |
-            ls -f .
-            mkdir build
-            cd build
-            git fetch origin gh-pages
-            git checkout gh-pages
-            ls -f .
+        uses: actions/checkout@v4 # Use the latest version of actions/checkout
+        with:
+          fetch-depth: 0
       - name: checkout repo
         uses: actions/checkout@master
       - name: build a project
         run: |
+          ls -f .
+          git branch -r
+          ls -f .
           npm ci
           npm install
           npm run build
