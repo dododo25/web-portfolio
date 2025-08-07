@@ -10,6 +10,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: initialize a repo
+        run: |
+            mkdir build
+            cd build
+            git fetch origin gh-pages
+            git checkout gh-pages
+            ls -f .
       - name: checkout repo
         uses: actions/checkout@master
       - name: build a project
@@ -22,8 +29,7 @@ jobs:
         run: |
           echo "last_commit_message=git log -1 --pretty=%B" >> "$GITHUB_OUTPUT"
           echo "${{steps.build.outputs.last_commit_message}}"
-          git fetch origin gh-pages
-          git checkout gh-pages
+          git checkout -b gh-pages
           git add .
           git commit -m "${{steps.build.outputs.last_commit_message}}"
           git push origin gh-pages
