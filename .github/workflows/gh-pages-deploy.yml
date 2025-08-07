@@ -23,12 +23,10 @@ jobs:
         run: |
           echo "last_commit_message=git log -1 --pretty=%B" >> "$GITHUB_OUTPUT"
           echo "${{steps.build.outputs.last_commit_message}}"
-          ls -f .
           cd build
           mkdir .git
           cd ..
           mv .git/** ./build/.git/
-          ls -f .
           ls -f ./build
           git checkout -b gh-pages
           git add .
