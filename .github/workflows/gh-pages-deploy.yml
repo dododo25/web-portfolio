@@ -12,13 +12,11 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@master
-      - name: install dependencies
-        run: npm install
-      - name: build
-        run: npm run build
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
+      - name: build a project
+        run: |
+          npm ci
+          npm install
+          npm run build
       - name: Push to gh-pages branch
         working-directory: ./build
         run: |
