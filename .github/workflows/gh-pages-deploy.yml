@@ -22,5 +22,6 @@ jobs:
         run: |
           ls -f .
           git checkout main
-          echo "LAST_COMMIT_MESSAGE=$(echo git log -1 --pretty=%B)"
-          echo $LAST_COMMIT_MESSAGE
+          run: |
+            echo "git log -1 --pretty=%B" >> $LAST_COMMIT_MESSAGE
+            echo $LAST_COMMIT_MESSAGE
