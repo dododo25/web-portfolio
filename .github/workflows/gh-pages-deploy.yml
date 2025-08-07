@@ -22,5 +22,5 @@ jobs:
         run: |
           ls -f .
           git checkout main
-          echo "LAST_COMMIT_MESSAGE=git log -1 --pretty=%B" >> $GITHUB_OUTPUT
-          echo $LAST_COMMIT_MESSAGE
+          echo "last_commit_message=git log -1 --pretty=%B" >> $GITHUB_OUTPUT
+          echo $steps.build.outputs.last_commit_message
