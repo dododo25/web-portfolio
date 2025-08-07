@@ -12,9 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: run npm build
-      run: |
-        npm ci
-        npm run build
+      run: npm run build
     - name: Push to gh-pages branch
       working-directory: ./build
       run: |
