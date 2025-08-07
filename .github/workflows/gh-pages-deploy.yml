@@ -22,7 +22,7 @@ jobs:
       - name: Push to gh-pages branch
         working-directory: ./build
         run: |
-          ls- f .
+          ls -f .
           git checkout main
           echo "LAST_COMMIT_MESSAGE=$(echo git log -1 --pretty=%B)"
           echo $LAST_COMMIT_MESSAGE
