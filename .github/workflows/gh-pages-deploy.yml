@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: build a project
       uses: actions/setup-node@v4
     - run: npm ci
-    - run: npm test # Run your tests
+    - run: npm run build
     - name: Push to gh-pages branch
       working-directory: ./build
       run: |
