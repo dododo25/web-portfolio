@@ -26,10 +26,7 @@ jobs:
           mkdir -p predeploy/.git
           mv .git/** ./predeploy/.git/
           cd predeploy
-          git checkout gh-pages
-          cd ..
-          mv ./build/** ./predeploy/
-          cd predeploy
+          mv -f ../build/** ./
           git add .
           git commit -m "${{steps.build.outputs.last_commit_message}}"
           git push origin gh-pages
