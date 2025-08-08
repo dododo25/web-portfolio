@@ -21,6 +21,7 @@ jobs:
           npm run build
       - name: Push to gh-pages branch
         run: |
+          git branch --show-current
           LAST_COMMIT_MESSAGE=$(git log -1 --pretty=%B)
           echo $LAST_COMMIT_MESSAGE
           echo ""
@@ -28,6 +29,7 @@ jobs:
           mv .git/** ./predeploy/.git/
           cd predeploy
           mv -f ../build/** ./
+          ls -f .
           git add .
           git config --global user.email "dmytro.terekhov@outlook.com"
           git config --global user.name "dododo25"
