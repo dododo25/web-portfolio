@@ -10,19 +10,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout repo
+      - name: Checkout repo
         uses: actions/checkout@v4 # Use the latest version of actions/checkout
         with:
           fetch-depth: 0
-      - name: build a project
+      - name: Build a project
         run: |
           npm ci
           npm install
           npm run build
-      - name: push to gh-pages branch
+      - name: Push to gh-pages branch
         run: |
-          last_commit_message=$(git log -1 --pretty=%B)
-          echo "${{steps.build.outputs.last_commit_message}}"
+          LAST_COMMIT_MESSAGE=$(git log -1 --pretty=%B)
+          echo $LAST_COMMIT_MESSAGE
           echo ""
           mkdir -p predeploy/.git
           mv .git/** ./predeploy/.git/
@@ -31,5 +31,5 @@ jobs:
           git add .
           git config --global user.email "dmytro.terekhov@outlook.com"
           git config --global user.name "dododo25"
-          git commit -m "${{steps.build.outputs.last_commit_message}}"
+          git commit -m "$LAST_COMMIT_MESSAGE"
           git push origin gh-pages
