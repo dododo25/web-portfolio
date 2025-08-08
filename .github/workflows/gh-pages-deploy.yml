@@ -21,7 +21,8 @@ jobs:
           npm run build
       - name: Push to gh-pages branch
         run: |
-          echo "last_commit_message='git log -1 --pretty=%B'" >> "$GITHUB_OUTPUT"
+          content=`git log -1 --pretty=%B`
+          echo last_commit_message=$content >> "$GITHUB_OUTPUT"
           echo "${{steps.build.outputs.last_commit_message}}"
           echo ""
           mkdir -p predeploy/.git
@@ -29,7 +30,7 @@ jobs:
           cd predeploy
           mv -f ../build/** ./
           git add .
-          git config --global user.email "you@example.com"
-          git config --global user.name "Your Name"
+          git config --global user.email "dmytro.terekhov@outlook.com"
+          git config --global user.name "dododo25"
           git commit -m "${{steps.build.outputs.last_commit_message}}"
           git push origin gh-pages
