@@ -23,12 +23,11 @@ jobs:
         run: |
           echo "last_commit_message=git log -1 --pretty=%B" >> "$GITHUB_OUTPUT"
           echo "${{steps.build.outputs.last_commit_message}}"
-          cd build
-          mkdir .git
-          cd ..
-          mv .git/** ./build/.git/
-          cd build
-          git add .
+          mkdir -p predeploy/.git
+          mv .git/** ./predeploy/.git/
           git checkout gh-pages
+          mv ./build/** ./predeploy/
+          cd predeploy
+          git add .
           git commit -m "${{steps.build.outputs.last_commit_message}}"
           git push origin gh-pages
