@@ -21,6 +21,7 @@ jobs:
           npm run build
       - name: Push to gh-pages branch
         run: |
+          echo "test"
           content=`git log -1 --pretty=%B`
           echo last_commit_message=$content >> "$GITHUB_OUTPUT"
           echo "${{steps.build.outputs.last_commit_message}}"
