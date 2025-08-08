@@ -8,6 +8,8 @@ on:
 
 jobs:
   build:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -28,7 +30,7 @@ jobs:
           git checkout gh-pages
           cp -rf ../build/** ./
           git add .
-          git config user.name dododo25
-          git config user.email dmytro.terekhov@outlook.com
+          git config user.name "${{github.actor}}"
+          git config user.email "${{github.actor_id}}+${{github.actor}}@users.noreply.github.com"
           git commit -m "$LAST_COMMIT_MESSAGE"
           git push origin gh-pages
