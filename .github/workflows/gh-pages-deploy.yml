@@ -1,0 +1,36 @@
+name: Deply workflow
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4 # Use the latest version of actions/checkout
+        with:
+          fetch-depth: 0
+      - name: Build a project
+        run: |
+          npm ci
+          npm install
+          npm run build
+      - name: Push to gh-pages branch
+        run: |
+          LAST_COMMIT_MESSAGE=$(git log -1 --pretty=%B)
+          mkdir -p predeploy/.git
+          mv .git/** ./predeploy/.git/
+          cd predeploy
+          git checkout gh-pages
+          cp -rf ../build/** ./
+          git add .
+          git config user.name "${{github.actor}}"
+          git config user.email "${{github.actor_id}}+${{github.actor}}@users.noreply.github.com"
+          git commit -m "$LAST_COMMIT_MESSAGE"
+          git push origin gh-pages
