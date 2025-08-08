@@ -19,11 +19,9 @@ jobs:
           npm ci
           npm install
           npm run build
-      - name: Push to gh-pages branch
+      - name: push to gh-pages branch
         run: |
-          git log -1 --pretty=%B
-          content=`git log -1 --pretty=%B`
-          echo last_commit_message=$content >> "$GITHUB_OUTPUT"
+          last_commit_message=$(git log -1 --pretty=%B)
           echo "${{steps.build.outputs.last_commit_message}}"
           echo ""
           mkdir -p predeploy/.git
