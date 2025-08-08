@@ -26,10 +26,9 @@ jobs:
           mv .git/** ./predeploy/.git/
           cd predeploy
           git checkout gh-pages
-          mv -f ../build/** ./
-          ls -f .
+          cp -rf ../build/** ./
           git add .
-          git config --global user.email "dmytro.terekhov@outlook.com"
-          git config --global user.name "dododo25"
+          git config user.name "${{github.actor}}"
+          git config user.email "${{github.actor_id}}+${{github.actor}}@users.noreply.github.com"
           git commit -m "$LAST_COMMIT_MESSAGE"
           git push origin gh-pages
