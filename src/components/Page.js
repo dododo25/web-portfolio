@@ -6,6 +6,7 @@ import Footer from './Footer';
 const Page = props => {
   const headerRef      = useRef();
   const mainContentRef = useRef();
+  const contentRef     = useRef();
   const navbarRef      = useRef();
 
   useEffect(() => {
@@ -13,6 +14,7 @@ const Page = props => {
 
     const headerElem      = headerRef.current;
     const mainContentElem = mainContentRef.current;
+    const contentElem     = contentRef.current;
     const navbarElem      = navbarRef.current;
 
     const frameFunction = () => {
@@ -59,7 +61,7 @@ const Page = props => {
       requestAnimationFrame(frameFunction);
     });
 
-    resizeObserver.observe(mainContentElem);
+    resizeObserver.observe(contentElem);
   }, []);
 
   return ([
@@ -114,7 +116,7 @@ const Page = props => {
       </nav>
       <div ref={mainContentRef} className='position-fixed overflow-hidden w-100' style={{marginTop: '3.6rem'}}>
         <div className='d-flex flex-column position-relative h-100'>
-          <div className='container flex-grow-1 text-white'>
+          <div ref={contentRef} className='container flex-grow-1 text-white'>
             {props.content}
           </div>
           <div style={{height: 100}} />

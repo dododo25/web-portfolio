@@ -34,7 +34,7 @@ const Games = () => {
   }
 
   return (<Page content={(
-      <div className='d-flex flex-column'>
+      <div className='d-flex flex-column h-100'>
         <h1 className='page-header mx-auto mt-2 mb-4'>Games</h1>
         {content}
       </div>

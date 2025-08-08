@@ -3,8 +3,10 @@ import '../css/Card.css';
 const Card = props => {
   const links = [];
 
-  for (let link of props.item.links) {
-    links.push(<a href={link.url} className='btn btn-outline-light text-center d-flex flex-row align-items-center' 
+  for (let i = 0; i < props.item.links.length; i++) {
+    const link = props.item.links[i];
+
+    links.push(<a key={i} href={link.url} className='btn btn-outline-light text-center d-flex flex-row align-items-center' 
       dangerouslySetInnerHTML={{__html: link.label}}></a>);
   }
 
