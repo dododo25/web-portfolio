@@ -35,7 +35,7 @@ const Apps = () => {
 
   return (<Page content={(
       <div className='d-flex flex-column h-100'>
-        <h1 className='page-header mx-auto mt-2 mb-4'>Apps</h1>
+        <h1 className='page-header mx-auto mt-2 mb-4'>Apps & Tools</h1>
         {content}
       </div>
     )} />);

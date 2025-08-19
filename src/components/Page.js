@@ -68,22 +68,22 @@ const Page = props => {
     <Background key={0} />,
     <div key={1} id='mainNavbar' className='offcanvas offcanvas-start w-40 px-3' tabIndex='-1' data-bs-theme='dark'>
       <div className='offcanvas-header'>
-        <h5 className='offcanvas-title'>dmytro.terekhov</h5>
+        <h5 className='offcanvas-title fs-2'>dmytro.terekhov</h5>
         <button type='button' className='btn-close' data-bs-dismiss='offcanvas' aria-label='Close'></button>
       </div>
       <div className='offcanvas-body'>
         <ul ref={headerRef} className='navbar-nav'>
           <li className='nav-item'>
-            <a className='nav-link' href='/'>home</a>
+            <a className='nav-link fs-1' href='/'>home</a>
           </li>
           <li className='nav-item'>
-            <a className='nav-link' href='/#/apps'>apps</a>
+            <a className='nav-link fs-1' href='/#/apps'>apps & tools</a>
           </li>
           <li className='nav-item'>
-            <a className='nav-link' href='/#/games'>games</a>
+            <a className='nav-link fs-1' href='/#/games'>games</a>
           </li>
           <li className='nav-item'>
-            <a className='nav-link' href='/#/blog'>blog</a>
+            <a className='nav-link fs-1' href='/#/blog'>blog</a>
           </li>
         </ul>
       </div>
@@ -102,7 +102,7 @@ const Page = props => {
           <div className='collapse navbar-collapse'>
             <ul ref={headerRef} className='navbar-nav me-auto mb-2 mb-lg-0'>
               <li className='nav-item'>
-                <a className='nav-link' href='/#/apps'>apps</a>
+                <a className='nav-link' href='/#/apps'>apps & tools</a>
               </li>
               <li className='nav-item'>
                 <a className='nav-link' href='/#/games'>games</a>

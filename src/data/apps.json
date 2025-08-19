@@ -1,5 +1,20 @@
 [
     {
+        "key": "ariadne",
+        "title": "Ariadne",
+        "logo": {
+            "src": "https://i.postimg.cc/wxDqhNm4/Chat-GPT-Image-7-2025-11-22-53.png",
+            "maxWidth": 360
+        },
+        "description": "Ariadne is a Java project that can build a visible process diagram from Python or Ren'Py files.",
+        "links": [
+            {
+                "label": "<i class=\"fa fa-brands fa-github fs-4 me-1\"></i><span>Github</span>",
+                "url": "https://github.com/dododo25/ariadne"
+            }
+        ]
+    },
+    {
         "key": "renpy-cracken",
         "title": "Ren'Py Cracken",
         "logo": {
@@ -19,17 +34,21 @@
         ]
     },
     {
-        "key": "ariadne",
-        "title": "Ariadne",
+        "key": "pyjssocket",
+        "title": "PyJSSocket",
         "logo": {
-            "src": "https://i.postimg.cc/wxDqhNm4/Chat-GPT-Image-7-2025-11-22-53.png",
+            "src": "https://i.postimg.cc/7LtBwtd0/pyjssocket.png",
             "maxWidth": 360
         },
-        "description": "Ariadne is a Java project that can build a visible process diagram from Python or Ren'Py files.",
+        "description": "A simple project that allows you to make a connection between your JavaScript and Python scripts using WebSockets.",
         "links": [
             {
+                "label": "PyPi",
+                "url": "https://pypi.org/project/pyjssocket/"
+            },
+            {
                 "label": "<i class=\"fa fa-brands fa-github fs-4 me-1\"></i><span>Github</span>",
-                "url": "https://github.com/dododo25/ariadne"
+                "url": "https://github.com/dododo25/pyjssocket"
             }
         ]
     }
