@@ -33,6 +33,12 @@ const Page = props => {
       }
 
       mainContentElem.firstChild.style.cssText = '';
+
+      for (let e of document.getElementsByClassName('offcanvas-backdrop')) {
+        e.parentNode.removeChild(e);
+      }
+
+      document.body.setAttribute('style', '');
     };
 
     const hash = document.location.hash;
