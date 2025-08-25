@@ -125,7 +125,7 @@ const Page = props => {
           <div ref={contentRef} className='container flex-grow-1 text-white'>
             {props.content}
           </div>
-          <div style={{height: 100}} />
+          <div style={{height: '8em'}} />
           <div className='d-flex flex-column flex-grow-0 flex-shrink-0'>
             <Footer key={0} />
           </div>
