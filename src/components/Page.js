@@ -3,8 +3,6 @@ import { useEffect, useRef } from 'react';
 import Background from './Background';
 import Footer from './Footer';
 
-import nothingToSee from '../images/nothing_to_see.webp';
-
 const Page = props => {
   const headerRef      = useRef();
   const mainContentRef = useRef();
