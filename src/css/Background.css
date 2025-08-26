@@ -1,3 +1,7 @@
+#stars1, #stars2, #stars {
+  background-size: contain;
+}
+
 #stars1 {
   background-image: url(../images/stars1.png);
   animation: 60s linear 0s infinite both running moving-stars;
