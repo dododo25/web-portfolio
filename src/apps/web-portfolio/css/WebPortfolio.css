@@ -1,0 +1,11 @@
+.WebPortfolio {
+  background-color: #000000;
+  font-family: 'Outfit', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --bs-primary: #B71C1C;
+}
+
+.WebPortfolio a {
+  text-decoration: none;
+}

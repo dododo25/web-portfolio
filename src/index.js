@@ -1,12 +1,13 @@
 import ReactDOM from 'react-dom/client';
 import { createHashRouter, RouterProvider } from 'react-router-dom';
 
-import './css/index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 
-import Apps from './components/Apps';
-import Games from './components/Games';
-import NotFound404 from './components/NotFound404';
-import MainPage from './components/MainPage';
+import NotFound404 from './NotFound404';
+import WebPortfolio from './apps/web-portfolio/components/WebPortfolio';
+import Apps from './apps/web-portfolio/components/Apps';
+import Games from './apps/web-portfolio/components/Games';
 
 const router = createHashRouter([
   {
@@ -15,7 +16,7 @@ const router = createHashRouter([
     children: [
       {
         path: '/',
-        element: <MainPage />
+        element: <WebPortfolio />,
       },
       {
         path: '/apps',
@@ -53,13 +54,10 @@ root.render(
 
       console.log(
         '%c ', [
-          'overflow: visible',
-          'font-size: 1px;',
-          'padding: 0px 119px;',
-          'line-height: 200px;',
-          'background-size: contain;',
-          `background: url(data:image/gif;base64,${base64String});`
-        ].join(' ')
+          'padding: 100px 120px',
+          `background: url(data:image/gif;base64,${base64String})`,
+          'background-size: cover'
+        ].join(';')
       );
     } catch (error) {
       console.error("Error converting remote GIF:", error);

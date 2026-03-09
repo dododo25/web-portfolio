@@ -1,0 +1,11 @@
+.WebPortfolio .Card .Logo {
+  height: 14rem;
+}
+
+.WebPortfolio .Card .Logo>img {
+  max-width: 12rem;
+}
+
+.WebPortfolio .Card > div:first-child {
+  min-height: 340px;
+}
