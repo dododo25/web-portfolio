@@ -1,6 +1,6 @@
-import '../css/WebPortfolio.css';
-
 import { useRootElementSizing } from '../../../customHooks';
+
+import '../css/WebPortfolio.css';
 
 const WebPortfolio = () => {
   useRootElementSizing('10px', 'sm', '12px', 'md', '14px', 'lg', '16px', 'xl', '20px', 'xxl', '24px');

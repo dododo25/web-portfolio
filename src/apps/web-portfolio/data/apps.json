@@ -18,6 +18,24 @@
     ]
   },
   {
+    "key": "pixel-circle",
+    "title": "Pixel Circle",
+    "logo": {
+      "src": "https://i.postimg.cc/CKfNz18T/pixel-circle-logo.png"
+    },
+    "description": "A tool that lets you create a pixelated circle of desired sizes.",
+    "links": [
+      {
+        "label": "Link",
+        "url": "#/apps/pixel-circle"
+      },
+      {
+        "label": "<i class=\"fa fa-brands fa-github fs-4 me-1\"></i><span>Github</span>",
+        "url": "https://github.com/dododo25/pixel-circle"
+      }
+    ]
+  },
+  {
     "key": "ariadne",
     "title": "Ariadne",
     "logo": {

@@ -3,11 +3,19 @@ import { createHashRouter, RouterProvider } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
+import 'bootstrap-icons/font/bootstrap-icons.min.css';
+import 'bootstrap-icons/font/fonts/bootstrap-icons.woff';
 
+import Container from './Container';
 import NotFound404 from './NotFound404';
+
 import WebPortfolio from './apps/web-portfolio/components/WebPortfolio';
 import Apps from './apps/web-portfolio/components/Apps';
 import Games from './apps/web-portfolio/components/Games';
+import { usePreload as useWebPortfolioPreload } from './apps/web-portfolio/components/preload';
+
+import PixelCircle from './apps/pixel-circle/components/PixelCircle';
+import { usePreload as usePixelCirclePreload } from './apps/pixel-circle/components/preload';
 
 const router = createHashRouter([
   {
@@ -16,15 +24,19 @@ const router = createHashRouter([
     children: [
       {
         path: '/',
-        element: <WebPortfolio />,
+        element: <Container usePreload={useWebPortfolioPreload} component={<WebPortfolio />} />
       },
       {
         path: '/apps',
-        element: <Apps />
+        element: <Container usePreload={useWebPortfolioPreload} component={<Apps />} />
       },
       {
         path: '/games',
-        element: <Games />
+        element: <Container usePreload={useWebPortfolioPreload} component={<Games />} />
+      },
+      {
+        path: '/apps/pixel-circle',
+        element: <Container usePreload={usePixelCirclePreload} component={<PixelCircle />} />
       }
     ]
   }
@@ -36,7 +48,11 @@ root.render(
   <RouterProvider router={router} />
 );
 
-(function(url){
+(function(url) {
+  if (window.location.hash === '#/apps/pixel-circle') {
+    return;
+  }
+
   const img = new Image();
 
   img.onload = async function() {
