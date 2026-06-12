@@ -2,15 +2,17 @@ import { useRef, useState } from 'react';
 import { CookiesProvider, useCookies } from 'react-cookie';
 import * as htmlToImage from 'html-to-image';
 
+import { defaultCellSize, cellStrokeWidth } from './Constants';
 import CircleCanvas from './CircleCanvas';
 import InputNumber from './InputNumber';
+import buildCircleBlocks from './buildCircleBlocks';
 
 import '../css/PixelCircle.css';
 
 const PixelCircleInner = () => {
   const onBind = value => {
     setBind(value);
-    setCookie('bind', value, {path: '/'});
+    setCookie('bind', value, {path: '/', maxAge: 604800});
   };
 
   const [cookies, setCookie, ] = useCookies(['width', 'height', 'thickWalls', 'fill', 'bind']);
@@ -20,32 +22,67 @@ const PixelCircleInner = () => {
   const [fill, setFill]             = useState(cookies['fill'] || false);
   const [bind, setBind]             = useState(cookies['bind'] || false);
 
-  const svgRef = useRef(null);
+  const canvasRef = useRef(null);
+  const blocks    = buildCircleBlocks(size.width, size.height, fill, thickWalls);
 
   const onSaveAsPNGButtonClicked = () => {
-    const svgNode = svgRef.current;
+    const canvas  = canvasRef.current;
+    const dataUrl = canvas.toDataURL('image/png');
 
-    htmlToImage.toBlob(svgNode)
-      .then(blob => {
-        const filename = `circle_${size.width}x${size.height}${(!fill && thickWalls) ? '_thick' : ''}${fill ? '_filled' : ''}.png`;
+    const link = document.createElement('a');
+    link.download = `circle_${size.width}x${size.height}${(!fill && thickWalls) ? '_thick' : ''}${fill ? '_filled' : ''}.png`;
+    link.href = dataUrl;
 
-        if (window.saveAs) {
-          window.saveAs(blob, filename);
-        } else {
-          const url = URL.createObjectURL(blob);
-          const link = document.createElement('a');
-          link.download = filename;
-          link.href = url;
-          link.click();
-          }
-      });
+    link.click();
   };
 
   const onSaveAsSVGButtonClicked = () => {
-    const svgNode = svgRef.current;
+    const svgNode = document.createElement('svg');
+
+    svgNode.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    svgNode.setAttribute('width',  blocks[0].length * defaultCellSize);
+    svgNode.setAttribute('height', blocks.length * defaultCellSize);
+
+    const svgDefs = document.createElement('defs');
+
+    const visibleBlockRect = document.createElement('rect');
+    const hiddenBlockRect  = document.createElement('rect');
+
+    visibleBlockRect.setAttribute('id',          'visible');
+    visibleBlockRect.setAttribute('width',        defaultCellSize);
+    visibleBlockRect.setAttribute('height',       defaultCellSize);
+    visibleBlockRect.setAttribute('fill',         '#0D47A1');
+    visibleBlockRect.setAttribute('stroke',       '#1A237E');
+    visibleBlockRect.setAttribute('stroke-width', cellStrokeWidth);
+
+    hiddenBlockRect.setAttribute('id',           'hidden');
+    hiddenBlockRect.setAttribute('width',        defaultCellSize);
+    hiddenBlockRect.setAttribute('height',       defaultCellSize);
+    hiddenBlockRect.setAttribute('fill',         '#0D47A133');
+    hiddenBlockRect.setAttribute('stroke-width', 0);
+
+    svgNode.appendChild(svgDefs);
+    svgDefs.appendChild(visibleBlockRect);
+    svgDefs.appendChild(hiddenBlockRect);
+
+    for (let i = 0; i < blocks.length; i++) {
+      for (let j = 0; j < blocks[i].length; j++) {
+        if (blocks[i][j] === undefined) {
+          continue;
+        }
+
+        const r = document.createElement('use');
+
+        r.setAttribute('href', blocks[i][j] ? '#visible' : '#hidden');
+        r.setAttribute('x',    j * defaultCellSize);
+        r.setAttribute('y',    i * defaultCellSize);
+
+        svgNode.appendChild(r);
+      }
+    }
 
     const link = document.createElement('a');
-    link.href = `data:text/plain;charset=utf-8,${encodeURIComponent(svgNode.parentNode.innerHTML)}`;
+    link.href = `data:text/plain;charset=utf-8,${encodeURIComponent(svgNode.outerHTML)}`;
     link.download = `circle_${size.width}x${size.height}${(!fill && thickWalls) ? '_thick' : ''}${fill ? '_filled' : ''}.svg`;
     link.click();
   };
@@ -68,8 +105,8 @@ const PixelCircleInner = () => {
 
               setSize(newSize);
 
-              setCookie('width',  newSize.width,  {path: '/'});
-              setCookie('height', newSize.height, {path: '/'});
+              setCookie('width',  newSize.width,  {path: '/', maxAge: 604800});
+              setCookie('height', newSize.height, {path: '/', maxAge: 604800});
             }} />
           </div>
           <div className='mx-1 mt-4'>
@@ -88,8 +125,8 @@ const PixelCircleInner = () => {
 
               setSize(newSize);
 
-              setCookie('width',  newSize.width,  {path: '/'});
-              setCookie('height', newSize.height, {path: '/'});
+              setCookie('width',  newSize.width,  {path: '/', maxAge: 604800});
+              setCookie('height', newSize.height, {path: '/', maxAge: 604800});
             }} />
           </div>
         </div>
@@ -97,7 +134,7 @@ const PixelCircleInner = () => {
           <div className='form-check fs-4'>
             <input id='fillCheckbox' className='form-check-input' type='checkbox' name='fillCheckbox' checked={fill} onChange={e => {
               setFill(e.target.checked);
-              setCookie('fill', e.target.checked, {path: '/'});
+              setCookie('fill', e.target.checked, {path: '/', maxAge: 604800});
             }} />
             <label className='form-check-label text-primary fw-semibold' htmlFor='fillCheckbox'>
               Fill
@@ -107,7 +144,7 @@ const PixelCircleInner = () => {
           <div className='form-check fs-4'>
             <input id='thickWallsCheckbox' className='form-check-input' type='checkbox' name='thickWallsCheckbox' checked={thickWalls} disabled={fill} onChange={e => {
               setThickWalls(e.target.checked);
-              setCookie('thickWalls', e.target.checked, {path: '/'});
+              setCookie('thickWalls', e.target.checked, {path: '/', maxAge: 604800});
             }} />
             <label className='form-check-label text-primary fw-semibold' htmlFor='thickWallsCheckbox'>
               Thick walls
@@ -129,7 +166,7 @@ const PixelCircleInner = () => {
             <span className='text-primary'>Made by </span><a href='https://dmytroterekhov.site/'>Dmytro Terekhov</a><span className='text-primary'>, 2026</span>
           </div>
         </div>
-      <CircleCanvas svgRef={svgRef} width={size.width} height={size.height} fill={fill} thickWalls={thickWalls} />
+      <CircleCanvas canvasRef={canvasRef} blocks={blocks} />
     </div>
   );
 }
