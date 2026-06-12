@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react';
 import { CookiesProvider, useCookies } from 'react-cookie';
-import * as htmlToImage from 'html-to-image';
 
 import { defaultCellSize, cellStrokeWidth } from './Constants';
 import CircleCanvas from './CircleCanvas';

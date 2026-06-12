@@ -105,7 +105,7 @@ const CircleCanvas = props => {
     const canvas = props.canvasRef.current;
     const ctx = canvas.getContext('2d');
 
-    if (width <= 0 || height <= 0) {
+    if (circleWidth <= 0 || circleHeight <= 0) {
       return;
     }
 
@@ -133,7 +133,7 @@ const CircleCanvas = props => {
         }
       }
     }
-  }, [props.blocks]);
+  }, [circleWidth, circleHeight, props.blocks, props.canvasRef]);
 
   return (
     <div className='w-100 h-100 overflow-hidden' style={{backgroundImage: `url(${bg})`, backgroundSize: `${defaultCellSize * 2}px ${defaultCellSize * 2}px`}}>
